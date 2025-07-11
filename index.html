@@ -69,44 +69,53 @@ text-align:center;color:#ffffff;}
 }
   
 
-/* ----- Impact セクション ----- */
-.impact{
-  background:var(--light);
-  padding:80px 0;
+/* ========== Impact レイアウト ========== */
+.impact-flex{
+  display:flex;
+  gap:60px;               /* カラム間の余白 */
+  align-items:center;
 }
-.impact-title{
-  text-align:center;
-  font-size:32px;
-  margin:0 0 40px;
-  color:var(--text);
-}
-@media(max-width:767px){
-  .impact-title{font-size:26px;}
-}
-.impact-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:32px;
-}
-.impact-card{
-  background:#ffffff;
-  border:1px solid #e0e0e0;
-  border-radius:8px;
-  padding:32px 24px;
-  text-align:center;
-  box-shadow:0 2px 6px rgba(0,0,0,.04);
-}
-.impact-card h3{
-  margin:0 0 16px;
-  font-size:20px;
-  font-weight:700;
-  color:var(--accent);        /* 見出しをブランド赤 */
-}
-.impact-card p{
+
+.impact-text{flex:1;}
+.impact-list{
+  list-style:none;
+  padding:0;
   margin:0;
-  font-size:15px;
+}
+.impact-list li{
+  position:relative;
+  padding-left:32px;
+  margin:20px 0;
+  font-size:18px;
   line-height:1.7;
 }
+/* チェックアイコン（CSSだけで描く）*/
+.impact-list li::before{
+  content:'';
+  position:absolute;
+  left:0;top:6px;
+  width:16px;height:16px;
+  border:2px solid var(--accent);
+  border-top:none;border-right:none;
+  transform:rotate(-45deg);
+}
+
+/* 右側画像 */
+.img-side{flex:1;max-width:480px;}
+.img-side img{
+  width:100%;
+  height:auto;
+  border-radius:6px;
+  object-fit:cover;
+}
+
+/* ─── モバイル ─── */
+@media(max-width:767px){
+  .impact-flex{flex-direction:column-reverse;gap:32px;}
+  .impact-title{font-size:26px;}
+  .impact-list li{font-size:16px;margin:16px 0;}
+}
+
 
   /* ------------------ sampleCTA ------------------ */
 .sample-cta{background:#FFF4F0;padding:32px 24px;margin:40px 0;border:1px solid #FFD5C0;border-radius:8px;text-align:center;}.sample-cta p{margin:0 0 16px;font-size:18px;}.btn.tertiary{background:#fff;color:var(--accent);border:2px solid var(--accent);} .btn.tertiary:hover{background:var(--accent);color:#fff;}
@@ -333,28 +342,29 @@ html{scroll-behavior:smooth;}
 </section>
 
 <!-- ================= Impact ================= -->
-<section class="impact"id="impact">
-  <div class="container">
-    <h2 class="impact-title">問検が選ばれる理由</h2>
+<section class="impact" id="impact">
+  <div class="container impact-flex">
 
-    <div class="impact-grid">
-      <div class="impact-card">
-        <h3>多くの情報を見極め、<br>正しい判断ができる</h3>
-        <p>溢れる情報に惑わされず、データや事実に基づいた的確な意思決定が可能になります。</p>
-      </div>
-
-      <div class="impact-card">
-        <h3>人を動かす、<br>説得力のある提案ができる</h3>
-        <p>論理的な構成と明確な根拠で、上司や顧客を納得させ、企画や提案の実現性を高めます。</p>
-      </div>
-
-      <div class="impact-card">
-        <h3>付加価値の高い<br>仕事ができるようになる</h3>
-        <p>総合的な能力が底上げされ、AIにはできない新しいアイデアの創出や、困難な課題の解決に貢献できます。</p>
-      </div>
+    <!-- 左：箇条書き -->
+    <div class="impact-text">
+      <h2 class="impact-title">問検が選ばれる理由</h2>
+      <ul class="impact-list">
+        <li><span>8カテゴリ別スコア</span>で弱点がひと目で分かる</li>
+        <li>面談フィードバック付きで<strong>改善アクション</strong>を即設定</li>
+        <li><strong>ロジカル思考〜人の巻き込み</strong>まで総合的に測定</li>
+        <li>4・3級は<strong>当日その場で結果把握</strong>、行動に移しやすい</li>
+      </ul>
     </div>
+
+    <!-- 右：イメージ（差し替え可） -->
+    <div class="img-side">
+      <!-- あとで hero.webp など実画像に置換 -->
+      <img src="img/impact-placeholder.webp" alt="プレゼンで自信を持って話す受験者のイメージ">
+    </div>
+
   </div>
 </section>
+
 
 <!-- ================= Usage ================= -->
 <section class="usage" id="usage">
