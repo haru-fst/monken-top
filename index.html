@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>問題解決検定 | 「考える力」を評価する</title>
+<style>
+:root{
+  --accent:#CA0E18;
+  --text:#333333;
+  --bg:#ffffff;
+  --light:#F8F8F8;
+  font-family:'Noto Sans JP',sans-serif;
+}
+body{margin:0;color:var(--text);background:var(--bg);} 
+.container{max-width:1280px;margin:0 auto;padding:0 20px;}
+/* ------------------ Hero ------------------ */
+.hero{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;
+  background:#F8F8F8}
+.hero-overlay{display:none;}
+text-align:center;color:#ffffff;}
+.hero-content{position:relative;z-index:1;}
+.hero h1{font-size:40px;font-weight:700;margin:0 0 16px;}
+.hero p{font-size:20px;margin:0 0 32px;}
+.hero, .hero h1, .hero p {color:var(--text);}
+.btn{display:inline-block;padding:12px 24px;font-size:16px;font-weight:700;border-radius:4px;text-decoration:none;color:#ffffff;background:var(--accent);transition:background .2s;}
+.btn:hover{background:#d8232b;}
+.btn.secondary{background:rgba(255,255,255,.9);color:var(--accent);} 
+.btn.secondary:hover{background:#ffffff;}
+/* Navi ---------------------------------------------------------------*/
+.toc{display:flex;justify-content:center;gap:0;border-radius:24px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.07);margin:40px auto;max-width:900px}
+.toc a{flex:1;padding:18px 0;text-align:center;font-weight:700;color:var(--text);background:#fff;border-right:1px solid #e0e0e0;text-decoration:none;position:relative}
+.toc a:last-child{border-right:none}
+.toc a:hover{background:#F8F8F8}
+.toc a::after{content:'▾';display:block;font-size:12px;margin-top:4px;color:var(--accent)}
+/* ------------------ About ------------------ */
+.about{background:var(--light);padding:60px 0;}
+.about h2{text-align:center;font-size:28px;margin-bottom:24px;}
+.about p{font-size:18px;text-align:center;max-width:780px;margin:0 auto 32px;line-height:1.6;}
+.category-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;list-style:none;padding:0;margin:0;}
+.category-list li{background:var(--bg);padding:8px 16px;border-radius:4px;font-size:14px;}
+/* ----- About ▶︎ 8つの力カード表示 ----- */
+.category-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:32px;
+  margin-top:40px;
+}
+.category-list li{
+  background:#ffffff;
+  border:1px solid #e0e0e0;
+  border-radius:8px;
+  padding:24px;
+}
+.category-list h4{
+  margin:0 0 12px;
+  font-size:18px;
+  font-weight:700;
+  color:var(--text);
+}
+.category-list p{
+  margin:0;
+  font-size:14px;
+  line-height:1.6;
+}
+
+@media(max-width:767px){
+  .category-list{gap:20px;}
+}
+  
+
+/* ----- Impact セクション ----- */
+.impact{
+  background:var(--light);
+  padding:80px 0;
+}
+.impact-title{
+  text-align:center;
+  font-size:32px;
+  margin:0 0 40px;
+  color:var(--text);
+}
+@media(max-width:767px){
+  .impact-title{font-size:26px;}
+}
+.impact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
+.impact-card{
+  background:#ffffff;
+  border:1px solid #e0e0e0;
+  border-radius:8px;
+  padding:32px 24px;
+  text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+}
+.impact-card h3{
+  margin:0 0 16px;
+  font-size:20px;
+  font-weight:700;
+  color:var(--accent);        /* 見出しをブランド赤 */
+}
+.impact-card p{
+  margin:0;
+  font-size:15px;
+  line-height:1.7;
+}
+
+  /* ------------------ sampleCTA ------------------ */
+.sample-cta{background:#FFF4F0;padding:32px 24px;margin:40px 0;border:1px solid #FFD5C0;border-radius:8px;text-align:center;}.sample-cta p{margin:0 0 16px;font-size:18px;}.btn.tertiary{background:#fff;color:var(--accent);border:2px solid var(--accent);} .btn.tertiary:hover{background:var(--accent);color:#fff;}
+/* Usage -----------------------------------------------------------*/
+.usage{background:var(--bg);padding:40px 0 40px;}
+.usage-title{text-align:center;font-size:28px;margin:0 0 40px}
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.usage-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:32px 24px;text-align:center}
+.usage-card::before{content:'';display:block;width:60px;height:60px;margin:0 auto 16px;background:#d9d9d9;border-radius:8px;}/*★イラスト枠*/
+  
+/* ▼▼▼ 1) 矢印 ▼▼▼ */
+.section-arrow{text-align:center;margin:-20px 0 40px;}
+.section-arrow span{display:block;width:20px;height:20px;border-bottom:2px solid #8b8b8b;border-right:2px solid #8b8b8b;transform:rotate(45deg);margin:4px auto;}
+ 
+ /* ▼▼▼ 2) Benefit 説明文 ▼▼▼ */
+ .benefit-intro{text-align:center;font-size:16px;margin:0 0 28px;color:var(--text);}
+
+/* ----- Benefit cards -----------------------------------------------------*/
+.benefit{background:#fff;padding:30px 0;}
+.benefit-title{text-align:center;font-size:28px;margin:0 0 40px;}
+
+.benefit-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
+.benefit-card{
+  background:#ffffff;
+  border:1px solid #e0e0e0;
+  border-radius:8px;
+  padding:32px 24px;
+  text-align:center;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+}
+.grade-label{background:#eee;
+color:var(--text);
+padding:4px 16px; 
+display:inline-block;
+font-weight:700;
+margin-bottom:16px;
+}
+.benefit-card h3{margin:0 0 12px;font-size:20px;font-weight:700;color:var(--text);}
+.benefit-card p{margin:0;font-size:15px;line-height:1.7;}
+
+/* ボタンを中央寄せ */
+.benefit .container{
+  text-align:center;      
+}
+
+.benefit-more{
+  display:inline-block;   /* インラインブロックにする */
+  margin:32px auto 0;     /* 左右 auto で中央配置 */
+  padding:10px 24px;
+  font-size:14px;
+}
+
+.benefit-more:hover{
+  opacity:.9;
+}
+
+  
+/* ------------------ Comparison Table ------------------ */
+.table-section{padding:80px 0;}
+.table-wrap{overflow-x:auto;}
+table{border-collapse:collapse;width:100%;}
+th,td{border:1px solid #CCC;padding:16px;text-align:center;white-space:nowrap;}
+th{background:#EFEFEF;font-weight:700;}
+/* ------------------ flow & faq------------------ */
+.flow h2,.faq h2{text-align:center;font-size:28px;margin:0 0 24px;}
+.flow h3{margin:24px 0 8px;font-size:20px;}.flow ol{padding-left:1.2em;margin:0 0 24px;}.faq-category{margin:32px 0;}.faq dt{font-weight:700;margin:8px 0;}.faq dd{margin:0 0 16px 1em;}.note{font-size:14px;color:#666;}
+  
+/* FAQ accordion design */
+.faq-category{margin:32px 0;}
+.faq-item{border:1px solid #ccc;border-radius:6px;margin:12px 0;overflow:hidden;transition:box-shadow .2s;}
+.faq-item:hover{box-shadow:0 2px 6px rgba(0,0,0,.08);}
+.faq-item summary{cursor:pointer;padding:12px 48px 12px 16px;font-weight:700;list-style:none;position:relative;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'\002B';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:20px;transition:transform .25s;}
+.faq-item[open] summary::after{content:'\2212';}
+.answer{padding:12px 16px;border-top:1px solid #eee;font-size:14px;line-height:1.6;background:var(--bg);}
+.note{font-size:14px;color:#666;}
+/* ------------------ Testimonials ------------------ */
+.testimonials{background:var(--light);padding:80px 0;}
+.test-wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+.card{background:#ffffff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:24px;width:280px;text-align:center;}
+.avatar{width:60px;height:60px;border-radius:50%;margin-bottom:16px;background:#dddddd;}
+.card-name{font-weight:700;margin-bottom:8px;}
+.card-text{font-size:14px;}
+/* ------------------ Fixed CTA ------------------ */
+.fixed-cta{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#ffffff;width:160px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .5s ease;}
+.fixed-cta.show{opacity:1;pointer-events:auto;}
+@media(max-width:767px){
+  .hero{min-height:360px;}
+  .hero h1{font-size:28px;}
+  .hero p{font-size:16px;margin:0 0 24px;}
+  .btn{font-size:14px;padding:10px 20px;}
+.sample-cta{padding:24px 16px;}
+.sample-cta p{font-size:16px;}
+  }
+html{scroll-behavior:smooth;}
+/* ----- 外部リンク用アイコン付きスタイル ----- */
+.ext-link{
+  color:var(--accent);              /* → #CA0E18   ※好みで変えてOK */
+  text-decoration:none;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;                          /* 文字とアイコンの間隔 */
+  font-weight:500;                  /* トンマナに合わせ太さ追加 */
+}
+.ext-link:hover{
+  color:#d8232b;                    /* アクセントの少し明るいトーン */
+  text-decoration:underline;
+}
+.ext-link::after{
+  content:'';                       /* 擬似要素にアイコンを描画 */
+  width:14px;height:14px;
+  background:currentColor;
+  mask:        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center/contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.voice-more{
+  margin:32px 0 0;     /* カードとの距離 */
+  text-align:center;   /* 中央寄せ */
+}
+.voice-more .btn.tertiary{
+  font-size:14px;
+  padding:8px 20px;
+}
+
+</style>
+</head>
+<body>
+<!-- ================= Header ================= -->
+<header>
+  <nav class="container" style="display:flex;align-items:center;justify-content:space-between;padding:16px 0;">
+    <a href="https://monken.pro/about/" style="font-weight:700;font-size:20px;color:var(--text);text-decoration:none;">問題解決検定</a>
+<div style="display:flex;gap:24px;align-items:center;">
+  <a href="https://monken.pro/about/">協会について</a>
+  <a href="https://monken.pro/about/">問題解決力とは</a>
+  <a href="https://monken.pro/about/">検定試験</a>
+  <a href="https://monken.pro/about/">受験者の声</a>
+  <a href="https://monken.pro/about/">よくある質問</a>
+  <a href="https://monken.pro/about/">お問い合わせ</a>
+  <a href="https://monken.pro/about/" class="btn" style="font-size:14px;">検定申込み</a>
+</div>
+  </nav>
+</header>
+
+<!-- ================= Hero ================= -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <h1>問題解決力を「定量評価」する検定</h1>
+    <p>8つの力をスコアで見える化。あなたの“強み”を証明しよう。</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#flow" class="btn secondary">受験の流れを見る</a>
+      <a href="https://example.com/apply" class="btn">今すぐ申し込む</a>
+    </div>
+  </div>
+</section>
+
+<!-- === Navi === -->
+<nav class="toc">
+  <a href="#about">問検とは</a>
+  <a href="#impact">選ばれる理由</a>
+  <a href="#usage">活用方法</a>
+  <a href="#flow"> 受験の流れ</a>
+  <a href="#testimonials">受験者の声</a>
+  </nav>
+  
+  <!-- === Sample CTA === -->
+  <div class="sample-cta container"><p>まずは4級のサンプル問題で<strong>出題イメージ</strong>を体験！</p><a href="/sample4" class="btn tertiary">サンプル問題を受ける</a></div>
+  
+<!-- ================= About Problem Solving ================= -->
+<section class="about" id="about">
+
+  <div class="container">
+    <h2>問題解決力検定とは？</h2>
+    <p>課題を特定し、仮説を立て、施策を実行し、結果を検証する。このサイクルを当検定では<strong>8 つのカテゴリ</strong>に分解し、それぞれをスコア化して“見える化”します。<a href="https://monken.pro/about/" target="_blank" style="font-size:14px;"class="ext-link" >詳しく見る</a>
+</p>
+
+<ul class="category-list">
+  <li>
+    <h4>ビジネスの基本</h4>
+    <p>経済知識・財務の理解など、土台となる知識</p>
+  </li>
+  <li>
+    <h4>問題解決の基本</h4>
+    <p>課題を発見し、解決策を立案するアプローチを理解する力</p>
+  </li>
+  <li>
+    <h4>情報収集</h4>
+    <p>課題発見の材料となる情報を特定し、効率的に収集する力</p>
+  </li>
+  <li>
+    <h4>チャートの作成</h4>
+    <p>情報を図解・分析し、意味合いを抽出する力</p>
+  </li>
+  <li>
+    <h4>質問力</h4>
+    <p>インタビューなどで相手の考えや本音を引き出す力</p>
+  </li>
+  <li>
+    <h4>論理的思考</h4>
+    <p>MECE・演繹法・帰納法を活用し、論理を組み立てる力</p>
+  </li>
+  <li>
+    <h4>文章構成</h4>
+    <p>ピラミッド構造で説得力のあるビジネス文書を作成する力</p>
+  </li>
+  <li>
+    <h4>人の巻き込み</h4>
+    <p>リーダーシップとコミュニケーションで周囲を動かす力</p>
+  </li>
+</ul>
+
+  </div>
+</section>
+
+<!-- ================= Impact ================= -->
+<section class="impact"id="impact">
+  <div class="container">
+    <h2 class="impact-title">問検が選ばれる理由</h2>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3>多くの情報を見極め、<br>正しい判断ができる</h3>
+        <p>溢れる情報に惑わされず、データや事実に基づいた的確な意思決定が可能になります。</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>人を動かす、<br>説得力のある提案ができる</h3>
+        <p>論理的な構成と明確な根拠で、上司や顧客を納得させ、企画や提案の実現性を高めます。</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>付加価値の高い<br>仕事ができるようになる</h3>
+        <p>総合的な能力が底上げされ、AIにはできない新しいアイデアの創出や、困難な課題の解決に貢献できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Usage ================= -->
+<section class="usage" id="usage">
+  <div class="container">
+    <h2 class="usage-title">問検の活用方法</h2>
+
+    <div class="usage-grid">
+
+      <div class="usage-card">
+        <h3>現在地を測り、学習計画を立てる</h3>
+        <p>8カテゴリで強み・弱みを数値化。弱点を学習優先度に反映し、再受験で成長を定点観測できます。</p>
+      </div>
+
+      <div class="usage-card">
+        <h3>昇進・転職で実力を証明する</h3>
+        <p>レーダーチャートを面談や履歴書に添付し、課題解決力を客観的に提示。キャリアアップ交渉を後押しします。</p>
+      </div>
+
+      <div class="usage-card">
+        <h3>チームの役割分担を最適化する</h3>
+        <p>メンバー全員受験で得意領域が可視化。プロジェクトの役割分担やペア学習の組み合わせを最適化できます。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+ 
+
+<!-- ================= Benefit ================= -->
+<!-- ▼▼▼ Flow Arrow --><div class="section-arrow"><span></span><span></span><span></span></div>
+<section class="benefit" id="benefit">
+  <div class="container">
+    <h2 class="benefit-title">受験結果をすぐ活かせる</h2>
+    <div class="benefit-grid">
+      <!-- カード 1 -->
+      <div class="benefit-card">
+        <span class="grade-label">4・3級</span>
+        <h3>当日その場でスコアを確認</h3>
+        <p>会場 CBT 試験は終了直後に8カテゴリ別スコアを表示。弱点をその日のうちに把握できます。</p>
+      </div>
+
+      <!-- カード 2 -->
+      <div class="benefit-card">
+        <span class="grade-label">1・2級</span>
+        <h3>詳細レポートで強みを深掘り</h3>
+        <p>記述答案と面談結果を踏まえた個別フィードバックをメール送付。改善ポイントが明確です。</p>
+      </div>
+    </div>
+
+    <a href="https://monken.pro/exam/" class="btn tertiary benefit-more">
+      各級について詳しく見る ▶
+    </a>
+  </div>
+</section>
+  
+<!-- ================= Comparison Table ================= -->
+<section class="table-section" id="levels">
+  <div class="container">
+    <h2 style="text-align:center;font-size:28px;margin-bottom:32px;">各級比較表</h2>
+    <div class="table-wrap">
+      
+      <table>
+        <thead>
+          <tr><th>等級</th><th>該当レベル</th><th>試験形式</th><th>試験時間</th><th>価格（税込）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>4級</td><td>戦略コンサルタントレベル</td><td>選択式</td><td>60分</td><td>7,700円</td></tr>
+          <tr><td>3級</td><td>戦略プランナーレベル</td><td>選択式</td><td>60分</td><td>11,000円</td></tr>
+          <tr><td>2級</td><td>戦略コンサルタントレベル</td><td>記述中心</td><td>120分</td><td>22,000円</td></tr>
+          <tr><td>1級</td><td>上級戦略コンサルタントレベル</td><td>記述＋プレゼンテーション+面談</td><td>120分</td><td>44,000円</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-more"><a href="https://monken.pro/exam/" class="ext-link" target="_blank">級別の詳細をもっと見る</a></p>
+  </div>
+</section>
+  
+<!-- ================= Flow ================= -->
+<section id="flow" class="flow">
+  <div class="container">
+    <h2>受験の流れ</h2>
+
+    <!-- ▼ 追加：ボックスラッパー -->
+    <div class="flow-box">
+      <h3>【３・４級】会場受験</h3>
+      <ol>
+        <li>申込フォームで <strong>会場 & 日付</strong> を選択</li>
+        <li>受験票をメール受信</li>
+        <li>全国200会場で通年実施</li>
+        <li>試験当日、会場で受験</li>
+      </ol>
+    </div>
+
+    <div class="flow-box">
+      <h3>【１・２級】個別日程調整</h3>
+      <ol>
+        <li>まずは <strong>問合せフォーム</strong> から希望を送信</li>
+        <li>事務局とメールで日程調整</li>
+        <li>東京本社（または団体受験会場）で実施</li>
+      </ol>
+    </div>
+
+    <p class="note">※ 企業単位の団体受験も承ります。詳細はお問い合わせください。</p>
+  </div>
+</section>
+
+  
+<!-- ================= FAQ ================= -->
+<section id="faq" class="faq">
+  <div class="container">
+    <h2>よくある質問</h2>
+
+    <div class="faq-category">
+      <h3>申込について</h3>
+
+      <details class="faq-item">
+        <summary>次回問題解決力検定の申込みはいつからですか？</summary>
+        <div class="answer"><p>4級・3級試験は通年で実施しており、いつでもお申込み、受験ができます。会場により予約できる日時が異なります。詳しくはJ-testingサイトの「申込」からご希望の会場エリアを選択し、受験できる日程をご確認ください。
+<br>※受験できる日程の確認は、会員登録なしで行うことができます。</p>
+<p>1級・2級試験は、東京の検定協会オフィス内にて平日の9時～21時の間にご受験可能です。指定会場での同時受験は3名様まで可能です。ご希望日の候補を3つほどお知らせ頂き、日程を調整させて頂きます。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>領収証を発行してもらえますか？</summary>
+        <div class="answer">
+<p>■3・4級の場合■</p>
+<p>クレジットカード支払い</p>
+<p>クレジットカードによる支払いを選択された場合のみ、受験者の方ご自身でWeb領収書の発行（印刷）を行っていただけます。試験日の翌日から90日間が発行期間となります。この間に印刷を行ってください。期間経過後は Web領収証は発行できませんのでご注意ください。Web領収証以外の領収証発行は行っておりません。
+<br>J-testingサイトにログインした状態でページ上部にある「マイページ」をクリックし、マイページを表示。発行したい試験名右側にある「領収証」ボタンをクリックしてください。表示された入力画面に会社名、部署名を入力し、「発行」ボタンをくクリックしてください。
+<br>※会社名、部署名が不要な方は未入力にて発行ボタンを押してください。
+領収証が表示されますので、ブラウザのメニューより印刷を行ってください。
+<br>※Web領収証についてはスマートフォンからの印刷に対応しておりません。パソコンから印刷してご利用ください。</p>
+
+<p>コンビニエンスストア支払い</p>
+<p>コンビニエンスストア店頭で発行される領収書のみとなりますので、コンビニエンスストアにてお支払い時にご確認（お受け取り）ください。これ以外に領収書の発行は行っておりません。</p>
+
+<p>ペイジー/銀行決済</p>
+<p>ATMでお支払いの場合には、利用明細票（レシート）が発行されますので大切に保管してください。これ以外に領収証の発行は行っておりません。</p>
+
+<p>■１・２級の場合■</p>
+<p>個人受験の場合、原則現金でのお支払いとなりますので、領収書は発行可能です。ご希望の方はその場でお知らせください。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>企業内での集合受験は可能ですか？</summary>
+        <div class="answer"><p>３・４級については紙媒体での試験実施が可能です。<br>資料をお送りして、人事の方に試験監督を行って頂く形となります。問題用紙・解答用紙をご返送いただき、2週間程度で結果をお返しいたします。</p>
+<p>１・２級については、人数分のPCが必要となるため、会場を借りての実施となります。試験監督はスタッフがお伺いしますので、地域に応じて別途お見積りとなります。ご相談はお問い合わせください。</p>
+        </div>
+      </details>
+    </div>
+    
+        <div class="faq-category">
+      <h3>受験について</h3>
+          
+      <details class="faq-item">
+        <summary>どのような人が対象ですか？</summary>
+        <div class="answer">
+<p>ご自身の問題解決能力を客観的に把握したい、すべてのビジネスパーソンが対象です。特に、企画職、管理職、コンサルタント、エンジニアの方など、論理的思考力が求められる職種の方におすすめです。</p>
+        </div>
+      </details>
+          
+      <details class="faq-item">
+        <summary>オンラインで受験できますか？</summary>
+        <div class="answer">
+<p>4級・3級試験は全国の会場、2級・1級試験は東京オフィスでの受験が必須となります。</p>
+        </div>
+      </details>
+    </div>
+    
+    <div class="faq-category">
+      <h3>結果・合格証について</h3>
+
+      <details class="faq-item">
+        <summary>結果発表はいつ行われますか？</summary>
+        <div class="answer">
+<p>4級・3級試験は試験終了後、画面上で結果を表示します。<br>当日会場でプリントアウトして頂くことが可能です。</p>
+<p>2級については、結果通知の際に合格された方には合格証をPDFでお送りします。ご希望の方に合格証を郵送いたします。</p>
+        </div>
+      </details>
+      
+      <details class="faq-item">
+        <summary>診断結果はどのように役立ちますか？</summary>
+        <div class="answer">
+<p>8つの力に基づいた詳細なフィードバックにより、ご自身の強み・弱みを正確に把握できます。結果は自己PRや人材育成、チームビルディングなど、多岐にわたってご活用いただけます。</p>
+        </div>
+      </details>
+      
+    </div>
+    <a href="https://monken.pro/faq/" class="ext-link"  style="margin-bottom:24px;">よくある質問をもっと見る</a>
+  </div>
+</section>
+  
+<!-- ================= Testimonials ================= -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 style="text-align:center;font-size:28px;margin-bottom:32px;">受験者の声</h2>
+        <div class="test-wrap">
+      <div class="card"><div class="avatar"></div><div class="card-name">齊藤 究氏｜フジモリ産業 部長</div><div class="card-text">「自然に「考える力」が養われる仕組みが構築されつつあります。」</div></div>
+      <div class="card">
+        <div class="avatar"></div>
+        <div class="card-name">20代｜コンサルタント</div>
+        <div class="card-text">「自身の問題解決力がどれぐらい身についたのか客観的に評価するために受験を続けてきました。」</div>
+      </div>
+      <div class="card">
+        <div class="avatar"></div>
+        <div class="card-name">30代｜商社 営業職</div>
+        <div class="card-text">「提案の幅や質が高まり、顧客からの信頼度も高まった実感があります。」</div>
+      </div>   
+    </div>  
+   <div class="voice-more"><a href="https://monken.pro/voice/" class="btn tertiary">受験者の声をもっと見る</a></div>
+
+  </div>
+</section>
+<a href="https://example.com/apply" class="fixed-cta" id="cta-fixed">今すぐ申し込む</a>
+<script>
+window.addEventListener('load',function(){
+  setTimeout(()=>{document.getElementById('cta-fixed').classList.add('show');},5000);
+});
+</script>
+<footer style="background:#f5f5f5;padding:32px 0;font-size:14px;text-align:center;">
+<a href=\"https://monken.pro/about/\">協会について</a> ｜<a href=\"https://monken.pro/contact/\">お問い合わせ</a></footer>
+</body>
+</html>
+
