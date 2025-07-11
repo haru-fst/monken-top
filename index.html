@@ -14,6 +14,37 @@
 }
 body{margin:0;color:var(--text);background:var(--bg);} 
 .container{max-width:1280px;margin:0 auto;padding:0 20px;}
+/* ===== Header navigation links =============================== */
+header nav a{
+  color: var(--text);           /* デフォルトは本文色 */
+  text-decoration: none;        /* 下線を消す */
+  font-weight: 600;             /* やや太字で視認性UP */
+  white-space: nowrap;          /* 1 文字ずつの縦折りを防止 */
+}
+header nav a:visited{color:var(--text);}   /* クリック後も同じ色 */
+header nav a:hover{
+  color: var(--accent);         /* ホバーだけブランド赤に */
+  text-decoration: underline;   /* アンダーラインで反応を示す */
+}
+/* ===== Mobile nav fix ======================================= */
+@media(max-width:767px){
+  /* ▼ ① リンクの親 <div> を“横スクロール可能”に */
+  header nav > div{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;            /* はみ出た分をスクロール */
+    white-space:nowrap;         /* 文字折り返し禁止         */
+    -webkit-overflow-scrolling:touch;/* iOSで慣性スクロール */
+  }
+
+  /* ▼ ② 個々のリンクは幅固定（折り返させない）     */
+  header nav a{
+    flex:0 0 auto;              /* 自分の幅を保つ            */
+    padding:8px 12px;
+    font-size:14px;             /* 少し小さく                */
+  }
+}
+
 /* ------------------ Hero ------------------ */
 .hero{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;
   background:#F8F8F8}
