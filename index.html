@@ -14,6 +14,10 @@
 }
 body{margin:0;color:var(--text);background:var(--bg);} 
 .container{max-width:1280px;margin:0 auto;padding:0 20px;}
+/* アクセント文字用 ------------- */
+.accent{
+  color: var(--accent);   /* #CA0E18 が :root で定義済み */
+}
 /* ===== Header navigation links =============================== */
 header nav a{
   color: var(--text);           /* デフォルトは本文色 */
@@ -305,7 +309,7 @@ html{scroll-behavior:smooth;}
 <section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content container">
-    <h1>問題解決力を測定する検定</h1>
+    <h1>「問題解決力」を<span class="accent">測定</span>する検定</h1>
     <p>問題解決力を8つの観点で見える化。伸ばすべき力が見えてくる</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
       <a href="#flow" class="btn secondary">受験の流れを見る</a>
