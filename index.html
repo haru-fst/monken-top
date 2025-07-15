@@ -284,6 +284,25 @@ th{background:#EFEFEF;font-weight:700;}
   .voice-title{font-size:36px;}
   .voice-card img{height:160px;}
 }
+/* ===== 企業ケース =============================================== */
+.adopt{background:var(--light);padding:80px 0;}
+.adopt-flex{display:flex;gap:60px;align-items:flex-start;}
+.adopt-card{flex:1;max-width:480px;}
+.adopt-card img{width:100%;height:auto;border:1px solid #e0e0e0;}
+.adopt-tag{
+  display:inline-block;background:#eee;color:var(--text);
+  font-size:14px;font-weight:700;padding:4px 12px;margin-bottom:12px;
+}
+.adopt-text{font-size:15px;line-height:1.7;margin-top:16px;}
+
+.adopt-graph{flex:1;max-width:480px;}
+.adopt-graph img{width:100%;height:auto;}
+
+.adopt-more{display:block;margin:48px auto 0;padding:12px 40px;font-size:16px;}
+
+@media(max-width:767px){
+  .adopt-flex{flex-direction:column;gap:32px;}
+}
 
 /* ------------------ Fixed CTA ------------------ */
 .fixed-cta{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#ffffff;width:160px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .5s ease;}
@@ -694,6 +713,35 @@ html{scroll-behavior:smooth;}
       <a href="https://monken.pro/voice/" class="btn tertiary">受験者の声をもっと見る</a>
     </div>
   </div>
+</section>
+
+<!-- ================= adopt（企業ケース） ================= -->
+<section class="adopt" id="adopt">
+  <div class="container adopt-flex">
+    <!-- 左：導入企業カード -->
+    <article class="adopt-card">
+      <span class="adopt-tag">商社／フジモリ産業</span>
+
+      <!-- hero.webp を流用して OK -->
+      <img src="hero.webp" alt="会議で戦略を練る様子">
+
+      <p class="adopt-text">
+        一般職・総合職、社員全体に4級獲得を会社が支援。
+        全体の共用語として、ビジネス用語、および問題解決の考え方が浸透し、従業員自らの戦略立案スムーズな事業運営につながっている
+      </p>
+    </article>
+
+    <!-- 右：インフォグラフィックを画像で -->
+    <div class="adopt-graph">
+      <img src="adopt.png"
+           alt="問題解決力検定の社内活用レベル">
+    </div>
+  </div>
+
+  <a href="https://monken.pro/"
+     class="btn tertiary adopt-more">
+     採用企業のケースをもっと見る
+  </a>
 </section>
 
 <!-- ================= fixed-cta ================= -->
