@@ -238,13 +238,63 @@ th{background:#EFEFEF;font-weight:700;}
 .faq-item[open] summary::after{content:'\2212';}
 .answer{padding:12px 16px;border-top:1px solid #eee;font-size:14px;line-height:1.6;background:var(--bg);}
 .note{font-size:14px;color:#666;}
-/* ------------------ Testimonials ------------------ */
-.testimonials{background:var(--light);padding:80px 0;}
-.test-wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
-.card{background:#ffffff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:24px;width:280px;text-align:center;}
-.avatar{width:60px;height:60px;border-radius:50%;margin-bottom:16px;background:#dddddd;}
-.card-name{font-weight:700;margin-bottom:8px;}
-.card-text{font-size:14px;}
+/* ===== Testimonials / Voice ===================================== */
+.voice-title{
+  text-align:center;
+  font-size:48px;
+  margin:0 0 40px;
+}
+.voice-title .accent{color:var(--accent);}
+
+.voice-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
+}
+
+.voice-card{
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:4px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+  overflow:hidden;
+}
+
+.voice-card img{
+  width:100%;
+  height:200px;           /* 必要なら調整 */
+  object-fit:cover;
+}
+
+.voice-tag{
+  display:inline-block;
+  background:#f0f0f0;
+  color:var(--text);
+  font-size:14px;
+  font-weight:700;
+  padding:4px 12px;
+  margin:12px;
+  border-radius:4px;
+}
+
+.voice-text{
+  padding:0 16px 24px;
+  font-size:15px;
+  line-height:1.7;
+}
+
+.voice-more{
+  display:inline-block;
+  margin:48px auto 0;
+  padding:14px 48px;
+  font-size:18px;
+}
+
+@media(max-width:767px){
+  .voice-title{font-size:36px;}
+  .voice-card img{height:160px;}
+}
+
 /* ------------------ Fixed CTA ------------------ */
 .fixed-cta{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#ffffff;width:160px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .5s ease;}
 .fixed-cta.show{opacity:1;pointer-events:auto;}
@@ -615,28 +665,48 @@ html{scroll-behavior:smooth;}
     <a href="https://monken.pro/faq/" class="ext-link"  style="margin-bottom:24px;">よくある質問をもっと見る</a>
   </div>
 </section>
-  
+
 <!-- ================= Testimonials ================= -->
 <section class="testimonials" id="testimonials">
   <div class="container">
-    <h2 style="text-align:center;font-size:28px;margin-bottom:32px;">受験者の声</h2>
-        <div class="test-wrap">
-      <div class="card"><div class="avatar"></div><div class="card-name">齊藤 究氏｜フジモリ産業 部長</div><div class="card-text">「自然に「考える力」が養われる仕組みが構築されつつあります。」</div></div>
-      <div class="card">
-        <div class="avatar"></div>
-        <div class="card-name">20代｜コンサルタント</div>
-        <div class="card-text">「自身の問題解決力がどれぐらい身についたのか客観的に評価するために受験を続けてきました。」</div>
-      </div>
-      <div class="card">
-        <div class="avatar"></div>
-        <div class="card-name">30代｜商社 営業職</div>
-        <div class="card-text">「提案の幅や質が高まり、顧客からの信頼度も高まった実感があります。」</div>
-      </div>   
-    </div>  
-   <div class="voice-more"><a href="https://monken.pro/voice/" class="btn tertiary">受験者の声をもっと見る</a></div>
+    <h2 class="voice-title"><span class="accent">受験者の</span>声</h2>
 
+    <div class="voice-grid">
+      <!-- ▼ カード 1 ───────────────-->
+      <article class="voice-card">
+        <span class="voice-tag">商社</span>
+        <img src="hero.webp" alt="受験者イメージ">
+        <p class="voice-text">
+          受験のきっかけは会社からの推薦。4級・3級は書籍で対策し、2級は検定フィードバックをもとに弱点を強化。顧客や協力会社に対して正しい取り組みを一緒に考えられるようになりました
+        </p>
+      </article>
+
+      <!-- ▼ カード 2 -->
+      <article class="voice-card">
+        <span class="voice-tag">コンサル・IT</span>
+        <img src="hero.webp" alt="受験者イメージ">
+        <p class="voice-text">
+          自分の問題解決力への漠然とした不安から一歩踏み出し受験。合格で得た確かな自信が仕事への取り組みを変え、課題克服で更なる成長を実感できました
+        </p>
+      </article>
+
+      <!-- ▼ カード 3 -->
+      <article class="voice-card">
+        <span class="voice-tag">自治体・公共サービス</span>
+        <img src="hero.webp" alt="受験者イメージ">
+        <p class="voice-text">
+          Eラーニング研修受講後、職員で団体受験。得意・不得意が数値で分かり納得感も◎。弱点を把握できるので今後のスキルアップに役立ちそうです
+        </p>
+      </article>
+    </div>
+
+    <a href="https://monken.pro/voice/" class="btn tertiary voice-more">
+      受験者の声をもっと見る
+    </a>
   </div>
 </section>
+
+<!-- ================= fixed-cta ================= -->
 <a href="https://example.com/apply" class="fixed-cta" id="cta-fixed">今すぐ申し込む</a>
 <script>
 window.addEventListener('load',function(){
