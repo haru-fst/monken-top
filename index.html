@@ -116,7 +116,6 @@ header nav a:hover{
   gap:60px;               /* カラム間の余白 */
   align-items:center;
 }
-
 .impact-text{flex:1;}
 .impact-list{
   list-style:none;
@@ -140,7 +139,6 @@ header nav a:hover{
   border-top:none;border-right:none;
   transform:rotate(-45deg);
 }
-
 /* 右側画像 */
 .img-side{flex:1;max-width:480px;}
 .img-side img{
@@ -149,7 +147,6 @@ header nav a:hover{
   border-radius:6px;
   object-fit:cover;
 }
-
 /* ─── モバイル ─── */
 @media(max-width:767px){
   .impact-flex{flex-direction:column-reverse;gap:32px;}
@@ -158,7 +155,7 @@ header nav a:hover{
 }
 
 
-  /* ------------------ sampleCTA ------------------ */
+/* ------------------ sampleCTA ------------------ */
 .sample-cta{background:#FFF4F0;padding:32px 24px;margin:40px 0;border:1px solid #FFD5C0;border-radius:8px;text-align:center;}.sample-cta p{margin:0 0 16px;font-size:18px;}.btn.tertiary{background:#fff;color:var(--accent);border:2px solid var(--accent);} .btn.tertiary:hover{background:var(--accent);color:#fff;}
 /* Usage -----------------------------------------------------------*/
 .usage{background:var(--bg);padding:40px 0 40px;}
@@ -217,7 +214,6 @@ margin-bottom:16px;
   opacity:.9;
 }
 
-  
 /* ------------------ Comparison Table ------------------ */
 .table-section{padding:80px 0;}
 .table-wrap{overflow-x:auto;}
@@ -239,6 +235,11 @@ th{background:#EFEFEF;font-weight:700;}
 .answer{padding:12px 16px;border-top:1px solid #eee;font-size:14px;line-height:1.6;background:var(--bg);}
 .note{font-size:14px;color:#666;}
 /* ===== Testimonials / Voice ===================================== */
+.testimonials h2{
+  text-align:center;           /* ❶ 中央揃え */
+  font-size:28px;              /* ❷ 他セクションと同じサイズ */
+  margin:0 0 40px;
+}
 .voice-title .accent{color:var(--accent);}
 
 .voice-grid{
@@ -246,7 +247,6 @@ th{background:#EFEFEF;font-weight:700;}
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:36px;
 }
-
 .voice-card{
   background:#fff;
   border:1px solid #ddd;
@@ -254,13 +254,11 @@ th{background:#EFEFEF;font-weight:700;}
   box-shadow:0 2px 8px rgba(0,0,0,.05);
   overflow:hidden;
 }
-
 .voice-card img{
   width:100%;
   height:200px;           /* 必要なら調整 */
   object-fit:cover;
 }
-
 .voice-tag{
   display:inline-block;
   background:#f0f0f0;
@@ -271,13 +269,11 @@ th{background:#EFEFEF;font-weight:700;}
   margin:12px;
   border-radius:4px;
 }
-
 .voice-text{
   padding:0 16px 24px;
   font-size:15px;
   line-height:1.7;
 }
-
 @media(max-width:767px){
   .voice-title{font-size:36px;}
   .voice-card img{height:160px;}
@@ -688,9 +684,9 @@ html{scroll-behavior:smooth;}
       </article>
     </div>
 
-    <a href="https://monken.pro/voice/" class="btn tertiary benefit-more">
-      受験者の声をもっと見る
-    </a>
+    <div class="voice-more">
+      <a href="https://monken.pro/voice/" class="btn tertiary">受験者の声をもっと見る</a>
+    </div>
   </div>
 </section>
 
