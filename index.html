@@ -297,8 +297,22 @@ th{background:#EFEFEF;font-weight:700;}
   .voice-card img{height:160px;}
 }
 /* ===== 企業ケース =============================================== */
-.adopt{background:var(--light);padding:80px 0;}
-.adopt-flex{display:flex;gap:60px;align-items:flex-start;}
+.adopt{
+  background:#fff;
+  padding:80px 0 60px ;
+  text-align:center;  
+}
+.adopt h2{                  
+  font-size:28px;            
+  margin:0 0 40px;
+}
+.adopt-flex{
+  display:grid;              /* ❺ Testimonials と同じグリッド型に */
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:36px;
+  text-align:left;     
+}
+
 .adopt-card{flex:1;max-width:480px;}
 .adopt-card img{width:100%;height:auto;border:1px solid #e0e0e0;}
 .adopt-tag{
@@ -310,8 +324,12 @@ th{background:#EFEFEF;font-weight:700;}
 .adopt-graph{flex:1;max-width:480px;}
 .adopt-graph img{width:100%;height:auto;}
 
-.adopt-more{display:block;margin:48px auto 0;padding:12px 40px;font-size:16px;}
-
+/* ボタンは Testimonials と同じスタイルを再利用 */
+.adopt .adopt-more{
+  /* ❻ ボタン見た目は .btn  + .tertiary だけに任せる */
+  display:inline-block;      /* 中央寄せにしたいので inline-block */
+  margin:48px auto 0;
+}
 @media(max-width:767px){
   .adopt-flex{flex-direction:column;gap:32px;}
 }
@@ -730,6 +748,7 @@ html{scroll-behavior:smooth;}
 <!-- ================= adopt（企業ケース） ================= -->
 <section class="adopt" id="adopt">
   <div class="container adopt-flex">
+     <h2>採用企業のケース</h2>
     <!-- 左：導入企業カード -->
     <article class="adopt-card">
       <span class="adopt-tag">商社／フジモリ産業</span>
