@@ -341,9 +341,21 @@ th{background:#EFEFEF;font-weight:700;}
   .adopt-flex{flex-direction:column;gap:32px;}
 }
 /* ------------------ flow & faq------------------ */
-.flow{background: var(--bg);padding:40px 0;}
-.flow h2,.faq h2{text-align:center;font-size:28px;margin:0 0 24px;}
-.flow h3{margin:24px 0 8px;font-size:20px;}.flow ol{padding-left:1.2em;margin:0 0 24px;}.faq-category{margin:32px 0;}.faq dt{font-weight:700;margin:8px 0;}.faq dd{margin:0 0 16px 1em;}.note{font-size:14px;color:#666;}
+.flow{background: var(--bg);
+  padding:40px 0;
+}
+.flow h2,.faq h2{
+  text-align:center;
+  font-size:28px;
+  margin:0 0 24px;
+}
+.flow h3{
+  margin:24px 0 8px;
+  font-size:20px;
+}
+.flow ol{
+  padding-left:1.2em;margin:0 0 24px;}
+.faq-category{margin:32px 0;}.faq dt{font-weight:700;margin:8px 0;}.faq dd{margin:0 0 16px 1em;}.note{font-size:14px;color:#666;}
   
 /* FAQ accordion design */
 .faq-category{margin:32px 0;}
@@ -357,7 +369,11 @@ th{background:#EFEFEF;font-weight:700;}
 .note{font-size:14px;color:#666;}
 
 /* ------------------ Fixed CTA ------------------ */
-.fixed-cta{position:fixed;right:20px;bottom:20px;background:var(--accent);color:#ffffff;width:160px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .5s ease;}
+.fixed-cta{position:fixed;
+  right:20px;
+  bottom:20px;
+  background:var(--accent);
+  color:#ffffff;width:160px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 8px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:opacity .5s ease;}
 .fixed-cta.show{opacity:1;pointer-events:auto;}
 @media(max-width:767px){
   .hero{min-height:360px;}
