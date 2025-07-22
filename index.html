@@ -80,6 +80,15 @@ header nav a:hover{
 .btn:hover{background:#d8232b;}  /* ホバー時 */
 .btn.secondary{background:rgba(255,255,255,.9);color:var(--accent);} 
 .btn.secondary:hover{background:#ffffff;}
+/*===== 2) ボタンを中央に置く汎用ラッパ =====*/
+.more-center{
+  text-align:center;     /* ボタンを中央に */
+  margin:40px 0 0;       /* セクションとの縦余白だけ管理 */
+}
+.more-box{                 /* 旧: .voice-more / .benefit-more など */
+  margin:32px 0 0;
+  text-align:center;       /* 中央寄せ用の器はこれだけで十分 */
+}
 /* Navi ---------------------------------------------------------------*/
 .toc{display:flex;justify-content:center;gap:0;border-radius:24px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.07);margin:40px auto;max-width:900px}
 .toc a{flex:1;padding:18px 0;text-align:center;font-weight:700;color:var(--text);background:#fff;border-right:1px solid #e0e0e0;text-decoration:none;position:relative}
@@ -216,13 +225,6 @@ margin-bottom:16px;
   text-align:center;      
 }
 
-.benefit-more{
-  display:inline-block;   /* インラインブロックにする */
-  margin:32px auto 0;     /* 左右 auto で中央配置 */
-  padding:10px 24px;
-  font-size:14px;
-}
-
 .benefit-more:hover{
   opacity:.9;
 }
@@ -324,12 +326,6 @@ th{background:#EFEFEF;font-weight:700;}
 .adopt-graph{flex:1;max-width:480px;}
 .adopt-graph img{width:100%;height:auto;}
 
-/* ボタンは Testimonials と同じスタイルを再利用 */
-.adopt .adopt-more{
-  /* ❻ ボタン見た目は .btn  + .tertiary だけに任せる */
-  display:inline-block;      /* 中央寄せにしたいので inline-block */
-  margin:48px auto 0;
-}
 @media(max-width:767px){
   .adopt-flex{flex-direction:column;gap:32px;}
 }
@@ -365,14 +361,6 @@ html{scroll-behavior:smooth;}
   background:currentColor;
   mask:        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center/contain no-repeat;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cline x1='10' y1='14' x2='21' y2='3'/%3E%3C/svg%3E") center/contain no-repeat;
-}
-.voice-more{
-  margin:32px 0 0;     /* カードとの距離 */
-  text-align:center;   /* 中央寄せ */
-}
-.voice-more .btn.tertiary{
-  font-size:14px;
-  padding:8px 20px;
 }
 
 </style>
@@ -560,9 +548,9 @@ html{scroll-behavior:smooth;}
       </div>
     </div>
 
-    <a href="https://monken.pro/exam/" class="btn tertiary benefit-more">
-      各級について詳しく見る
-    </a>
+    <div class="more-center">
+    <a href="https://monken.pro/exam/" class="btn tertiary">各級について詳しく見る</a>
+    </div>
   </div>
 </section>
   
@@ -736,12 +724,12 @@ html{scroll-behavior:smooth;}
         <p class="voice-text">
           Eラーニング研修受講後、職員で問検を団体受験。自分の得意・不得意がはっきり分かり、納得感がありました。数値で弱点を把握できるので、今後のスキル向上にも役立てられそうです
         </p>
-      </article>
-    </div>
+        </article>
+      </div>
 
-    <div class="voice-more">
-      <a href="https://monken.pro/voice/" class="btn tertiary">受験者の声をもっと見る</a>
-    </div>
+      <div class="more-center">
+        <a href="https://monken.pro/voice/" class="btn tertiary">受験者の声をもっと見る</a>
+      </div>
   </div>
 </section>
 
@@ -771,9 +759,9 @@ html{scroll-behavior:smooth;}
       </div>
     </div>
 
-    <a href="https://monken.pro/" class="btn tertiary adopt-more">
-      採用企業のケースをもっと見る
-    </a>
+      <div class="more-center">
+        <a href="https://monken.pro/case/" class="btn tertiary">採用企業のケースをもっと見る</a>
+      </div>
 </section>
 
 <!-- ================= fixed-cta ================= -->
