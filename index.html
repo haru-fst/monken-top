@@ -18,6 +18,12 @@ body{margin:0;color:var(--text);background:var(--bg);}
 .accent{
   color: var(--accent);   /* #CA0E18 が :root で定義済み */
 }
+/* ─── ブランド赤のアンダーライン ─── */
+.hl{
+  text-decoration: underline;           /* 線を引く          */
+  text-decoration-thickness: 2px;       /* 線の太さ           */
+  text-decoration-color: var(--accent); /* 色をブランド赤に   */
+}
 /* ===== Header navigation links =============================== */
 header nav a{
   color: var(--text);           /* デフォルトは本文色 */
@@ -515,23 +521,19 @@ html{scroll-behavior:smooth;}
       <h2 class="impact-title">問検が<span class="accent">選ばれる理由</span></h2>
 <ul class="impact-list">
   <li>
-    <span>8つの力を客観的に測れる</span>
-    問題発見から人の巻き込みまで、問題解決に必要な8つの力を個別スコア化
+    <span class="hl">問題発見から人の巻き込み</span>まで、問題解決に必要な8つの力を<span class="hl">客観的に測れる</span>
   </li>
 
   <li>
-    <span>受験直後に弱点が分かる即時スコア／詳細レポート</span>
-    4・3級はCBT会場で当日スコアを確認、学習計画に即反映。2・1級は記述・面談結果を踏まえた個別レポートで改善ポイントを深掘り
+    4・3級は受験直後に弱点が分かる<span class="hl">即時スコアで学習計画に即反映</span>/2・1級は記述・面談結果を踏まえた<span class="hl">個別レポートで改善ポイントを深掘り</span>
   </li>
 
   <li>
-    <span>現場で磨かれた評価ロジック</span>
-    コンサルティング会社監修フレームワークをもとに、現場で再現性の高い判定基準を策定。信頼性が高く、実務ですぐ生かせる
+    <span class="hl">コンサルティング会社監修</span>であり、現場で磨かれた再現性の高い評価ロジックを策定。<span class="hl">信頼性が高く、実務ですぐ生かせる</span>
   </li>
 
   <li>
-    <span>採用・昇格・研修効果測定まで幅広く活用可能</span>
-    個人の強みと課題、部門ごとの傾向をすぐ共有でき、人材育成につながる
+    <span class="hl">採用・昇格・研修効果測定</span>まで幅広く活用可能。個人の強みと課題、部門ごとの傾向をすぐ共有でき、<span class="hl">人材育成</span>につながる
   </li>
 </ul>
 
