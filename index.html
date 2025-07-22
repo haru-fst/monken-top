@@ -263,6 +263,13 @@ margin-bottom:16px;
   padding:40px 0;
   background: var(--light);
 }
+.table-section .section-intro{
+  text-align:center;     /* 中央寄せ */
+  font-size:18px;        /* About と同じ */
+  max-width:780px;       /* 行が長くなり過ぎない */
+  margin:0 auto 32px;    /* 上0 右左auto 下32px → 上下余白は About と同じ */
+  line-height:1.6;
+}
 .table-wrap{overflow-x:auto;}
 table{border-collapse:collapse;width:100%;}
 th,td{border:1px solid #CCC;padding:16px;text-align:center;white-space:nowrap;}
@@ -607,9 +614,10 @@ html{scroll-behavior:smooth;}
 <section class="table-section" id="levels">
   <div class="container">
     <h2 style="text-align:center;font-size:28px;margin-bottom:32px;">各級比較表</h2>
-        <p>「コンサルタントとしての思考力を証明したい」「部門ごとの課題傾向を把握したい」など、
-        目的に応じて4つの等級から選択できます。
-        試験形式や難易度はそれぞれ異なり、個人にも組織にも柔軟に活用できます。
+        <p class="section-intro">
+          「コンサルタントとしての思考力を証明したい」「部門ごとの課題傾向を把握したい」など、
+          目的に応じて4つの等級から選択できます。
+          試験形式や難易度はそれぞれ異なり、個人にも組織にも柔軟に活用できます。
         </p>
     <div class="table-wrap">
       
