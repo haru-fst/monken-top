@@ -184,8 +184,30 @@ header nav a:hover{
 .usage-title{text-align:center;font-size:28px;margin:0 0 40px}
 .usage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
 .usage-card{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:32px 24px;text-align:center}
-.usage-card::before{content:'';display:block;width:60px;height:60px;margin:0 auto 16px;background:#d9d9d9;border-radius:8px;}/*★イラスト枠*/
-  
+.usage-card::before{
+  content:'';
+  display:block;
+  width:60px;                /* 枠サイズ */
+  height:60px;
+  margin:0 auto 16px;
+  border-radius:8px;
+  background:#d9d9d9;        /* ← フォールバック（読み込めなかった時の色）*/
+  background-size:contain;   /* 縦横比を維持してフィット */
+  background-position:center;
+  background-repeat:no-repeat;
+}
+/* --- Usage個別の画像パス ---------------- */
+.usage-card.u-plan::before  {
+  background-image:url("usage_plan.png");
+}
+.usage-card.u-career::before{
+  background-image:url("usage_career.png");
+}
+.usage-card.u-team::before  {
+  background-image:url("usage_team.png");
+}
+
+
 /* ▼▼▼ 1) 矢印 ▼▼▼ */
 .section-arrow{text-align:center;margin:-20px 0 40px;}
 .section-arrow span{display:block;width:20px;height:20px;border-bottom:2px solid #8b8b8b;border-right:2px solid #8b8b8b;transform:rotate(45deg);margin:4px auto;}
@@ -507,17 +529,17 @@ html{scroll-behavior:smooth;}
 
     <div class="usage-grid">
 
-      <div class="usage-card">
+      <div class="usage-card u-plan">
         <h3>現在地を測り、学習計画を立てる</h3>
         <p>8カテゴリで強み・弱みを数値化。弱点を学習優先度に反映し、再受験で成長を定点観測できます。</p>
       </div>
 
-      <div class="usage-card">
+      <div class="usage-card u-career">
         <h3>昇進・転職で実力を証明する</h3>
         <p>レーダーチャートを面談や履歴書に添付し、課題解決力を客観的に提示。キャリアアップ交渉を後押しします。</p>
       </div>
 
-      <div class="usage-card">
+      <div class="usage-card u-team">
         <h3>チームの役割分担を最適化する</h3>
         <p>メンバー全員受験で得意領域が可視化。プロジェクトの役割分担やペア学習の組み合わせを最適化できます。</p>
       </div>
