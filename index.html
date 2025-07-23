@@ -87,8 +87,41 @@ header nav a:hover{
   background:var(--accent);
   transition:background .2s;}
 .btn:hover{background:#d8232b;}  /* ホバー時 */
-.btn.secondary{background:rgba(255,255,255,.9);color:var(--accent);} 
+.btn.secondary{
+  background:rgba(255,255,255,.9);color:var(--accent);} 
 .btn.secondary:hover{background:#ffffff;}
+ /* 一番使ってるボタンtertiary（もっと見る、など） */
+.btn.tertiary{
+  background:#fff;
+  color:var(--accent);
+  border:2px solid var(--accent);
+} 
+.btn.tertiary:hover{background:var(--accent);color:#fff;}
+
+  /* tertiary矢印------------------------------ */
+ .btn.tertiary::after{
+  content:'';
+  width:28px;height:28px;
+  border-radius:50%;
+  background:var(--accent);
+  margin-left:auto;
+  }
+ .btn.tertiary::before{
+  content:'';
+  position:absolute;
+  right:24px; top:50%;
+  width:6px; height:6px;
+  border-right:2px solid #fff;
+  border-bottom:2px solid #fff;
+  transform:translateY(-50%) rotate(-45deg);
+  pointer-events:none;
+ }
+
+ /* ▼ tertiaryホバー時：矢印丸を軽く右へスライド --------------- */
+ .btn.tertiary:hover::after{
+  transform:translateX(4px);
+ }
+
 /*===== 2) ボタンを中央に置く汎用ラッパ =====*/
 .more-center{
   text-align:center;     /* ボタンを中央に */
@@ -185,9 +218,16 @@ header nav a:hover{
   .impact-list li{font-size:16px;margin:16px 0;}
 }
 
-
 /* ------------------ sampleCTA ------------------ */
-.sample-cta{background:#FFF4F0;padding:32px 24px;margin:40px 0;border:1px solid #FFD5C0;border-radius:8px;text-align:center;}.sample-cta p{margin:0 0 16px;font-size:18px;}.btn.tertiary{background:#fff;color:var(--accent);border:2px solid var(--accent);} .btn.tertiary:hover{background:var(--accent);color:#fff;}
+.sample-cta{
+  background:#FFF4F0;
+  padding:32px 24px;
+  margin:40px 0;
+  border:1px solid #FFD5C0;
+  border-radius:8px;
+  text-align:center;}
+  .sample-cta p{margin:0 0 16px;font-size:18px;}
+
 /* Usage -----------------------------------------------------------*/
 .usage{background:var(--bg);padding:40px 0 40px;}
 .usage-title{text-align:center;font-size:28px;margin:0 0 40px}
