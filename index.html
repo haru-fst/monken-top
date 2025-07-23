@@ -72,12 +72,13 @@ header nav a:hover{
 .hero p{font-size:20px;margin:0 0 32px;}
 .hero, .hero h1, .hero p {color:var(--text);}
 /* =====================================================
-  Buttons 
+  Buttons (共通ボタン)
 ===================================================== */
 .btn{
+  position:relative;              /* 疑似要素の基準点にする★ */
   display:inline-flex;
   align-items:center;
-  gap:12px;                       /* テキストと矢印の間隔 */
+  gap:16px;                       /* テキストと矢印の間隔 */
   padding:12px 48px 12px 32px;    /* 右側を少し広げて矢印分の余白確保 */
   font-size:16px;
   font-weight:700;
@@ -90,7 +91,9 @@ header nav a:hover{
 .btn.secondary{
   background:rgba(255,255,255,.9);color:var(--accent);} 
 .btn.secondary:hover{background:#ffffff;}
- /* 一番使ってるボタンtertiary（もっと見る、など） */
+/* ----------------------------------------------------
+  枠線タイプ（.tertiary）  ※主に「もっと見る」ボタン用
+---------------------------------------------------- */
 .btn.tertiary{
   background:#fff;
   color:var(--accent);
@@ -98,18 +101,23 @@ header nav a:hover{
 } 
 .btn.tertiary:hover{background:var(--accent);color:#fff;}
 
-  /* tertiary矢印------------------------------ */
+  /* ▼ 丸い矢印アイコン  -------------------------------- */
  .btn.tertiary::after{
   content:'';
-  width:28px;height:28px;
+  width:24px;height:24px;
   border-radius:50%;
   background:var(--accent);
-  margin-left:auto;
+  flex-shrink:0;                  /* 丸がつぶれないよう固定 */
+  display:inline-flex;            /* ←内側に矢印を描くため */
+  justify-content:center;
+  align-items:center;
+  transition:.25s;
   }
  .btn.tertiary::before{
   content:'';
-  position:absolute;
-  right:24px; top:50%;
+  position:absolute;              /* ○の中心で描く */
+  right:34px;                     /* 32+2(px) の位置調整 */
+  top:50%;
   width:6px; height:6px;
   border-right:2px solid #fff;
   border-bottom:2px solid #fff;
