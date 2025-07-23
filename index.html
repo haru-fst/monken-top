@@ -56,21 +56,7 @@ header nav a:hover{
   }
 }
 
-/* ------------------ Hero ------------------ */
-.hero{
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  min-height:400px;
-  /* 背景画像＋フォールバック色 */
-  background:url("hero_background.png") center/cover no-repeat, #F8F8F8;
-}
-.hero-overlay{display:none;}
-.hero-content{position:relative;z-index:1;}
-.hero h1{font-size:40px;font-weight:700;margin:0 0 16px;}
-.hero p{font-size:20px;margin:0 0 32px;}
-.hero, .hero h1, .hero p {color:var(--text);}
+
 /* =====================================================
   Buttons (共通ボタン)
 ===================================================== */
@@ -128,6 +114,55 @@ header nav a:hover{
   margin:32px 0 0;
   text-align:center;       /* 中央寄せ用の器はこれだけで十分 */
 }
+/* ==============================================
+   Hero（トップ）
+============================================== */
+.hero{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:400px;
+  /* 背景画像＋フォールバック色 */
+  background:url("hero_background.png") center/cover no-repeat, #F8F8F8;
+}
+.hero-overlay{display:none;}
+.hero-content{position:relative;z-index:1;}
+.hero h1{font-size:40px;font-weight:700;margin:0 0 16px;}
+.hero p{font-size:20px;margin:0 0 32px;}
+.hero, .hero h1, .hero p {color:var(--text);}
+
+/* ----------------------------------------------------
+   サンプル問題ボタン in Hero
+---------------------------------------------------- */
+.hero .cta-btn{ 
+  /* ヒーロー専用の見た目 */ 
+  margin-top:32px; 
+  /* 2ボタンの下に間隔 */ 
+  background:#fff;
+   color:var(--accent);
+    border:2px solid var(--accent);
+     box-shadow:0 4px 12px rgba(0,0,0,.07);
+     } 
+     .hero .cta-btn:hover{
+       background:var(--accent);
+        color:#fff;
+       box-shadow:0 6px 18px rgba(0,0,0,.12); 
+      } 
+    .hero .cta-btn::after{ 
+      content:''; 
+      width:8px;
+      height:8px; 
+      border-right:2px solid currentColor; 
+      border-bottom:2px solid currentColor; 
+      transform:rotate(-45deg); 
+      margin-left:12px; transition:transform .25s; 
+    } 
+    .hero .cta-btn:hover::after{
+      transform:translateX(4px) rotate(-45deg);} 
+      /* 既存の .sample-cta はヒーロー以外で呼ばないので無効化 */ 
+      .sample-cta{background:none;padding:0;}
+
 /* =====================================================
  ナビ
 ===================================================== */
@@ -136,56 +171,6 @@ header nav a:hover{
 .toc a:last-child{border-right:none}
 .toc a:hover{background:#F8F8F8}
 .toc a::after{content:'▾';display:block;font-size:12px;margin-top:4px;color:var(--accent)}
-
-/* ==============================================
-   サンプル問題 CTA ボタン（中央配置）
-   HTML 側： <a href="/sample4" class="btn cta-btn">4級サンプル問題を体験する</a>
-============================================== */
-/* 0) グレー背景 & 余白 --------------------- */
-.sample-cta{
-  background:var(--light);       /* #F8F8F8 */
-  padding:40px 0;
-}
-
-/* 1) 真ん中に寄せる ----------------------- */
-.sample-cta .cta-inner{text-align:center;}
-
-/* 2) ボタン本体 ------------ */
-.btn.cta-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:0;
-  padding:18px 56px;
-  font-size:18px;
-  background:#fff;
-  color:var(--text);
-  border:2px solid var(--text);
-  border-radius:6px;
-  box-shadow:0 4px 12px rgba(0,0,0,.07);
-  transition:all .2s ease;
-}
-.btn.cta-btn:hover{
-  background:var(--text);
-  color:#fff;
-  box-shadow:0 6px 18px rgba(0,0,0,.12);
-}
-/* 矢印 */
-.btn.cta-btn::after{
-  content:'';
-  width:9px; height:9px;
-  border-right:2px solid currentColor;
-  border-bottom:2px solid currentColor;
-  transform:rotate(-45deg);
-  transition:transform .2s ease;
-  margin-left:12px; 
-}
-.btn.cta-btn:hover::after{
-  transform:translateX(4px) rotate(-45deg);
-}
-/* モバイル幅いっぱい（任意） */
-@media(max-width:767px){
-  .btn.cta-btn{width:100%;}
-}
 
 /* =====================================================
 About
@@ -549,16 +534,26 @@ html{scroll-behavior:smooth;}
   </nav>
 </header>
 
-<!-- ================= Hero ================= -->
+<!-- ================= Hero（トップ） ================= -->
 <section class="hero">
   <div class="hero-overlay"></div>
   <div class="hero-content container">
     <h1>「問題解決力」を<span class="accent">測定</span>する検定</h1>
     <p>問題解決力を8つの観点で見える化。伸ばすべき力が見えてくる</p>
+    <!-- 受験の流れ・申しこみボタン -->
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-      <a href="#flow" class="btn secondary">受験の流れを見る</a>
-      <a href="https://j-testing.jp/Reserve/Certification/Detail/1082" class="btn">今すぐ申し込む</a>
+      <a href="#flow" class="btn secondary">
+        受験の流れを見る
+      </a>
+      <a href="https://j-testing.jp/Reserve/Certification/Detail/1082" class="btn">
+        今すぐ申し込む
+      </a>
     </div>
+    <!-- サンプルボタン -->
+    <div class="sample-cta">
+      <a href="https://monken.mc-plus.jp/exam/trial/" class="btn cta-btn">今すぐ<strong>4級サンプル問題</strong>を受ける（選択式）</a>
+    </div>
+
   </div>
 </section>
 
@@ -573,11 +568,7 @@ html{scroll-behavior:smooth;}
   </nav>
   
   <!-- === Sample CTA ============================================ -->
-  <div class="sample-cta">
-    <div class="cta-inner">
-    <!-- ボタン -->
-    <a href="https://monken.mc-plus.jp/exam/trial/" class="btn cta-btn">今すぐ<strong>4級サンプル問題</strong>を受ける（選択式）</a>
-  </div>
+  
 </div>
   
 <!-- ================= About Problem Solving ================= -->
