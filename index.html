@@ -128,13 +128,51 @@ header nav a:hover{
   margin:32px 0 0;
   text-align:center;       /* 中央寄せ用の器はこれだけで十分 */
 }
-/* Navi ---------------------------------------------------------------*/
+/* =====================================================
+ ナビ
+===================================================== */
 .toc{display:flex;justify-content:center;gap:0;border-radius:24px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.07);margin:40px auto;max-width:900px}
 .toc a{flex:1;padding:18px 0;text-align:center;font-weight:700;color:var(--text);background:#fff;border-right:1px solid #e0e0e0;text-decoration:none;position:relative}
 .toc a:last-child{border-right:none}
 .toc a:hover{background:#F8F8F8}
 .toc a::after{content:'▾';display:block;font-size:12px;margin-top:4px;color:var(--accent)}
-/* ------------------ About ------------------ */
+
+/* =====================================================
+ sampleCTA (サンプル問題)
+===================================================== */
+.sample-cta{
+  background:var(--light);
+  padding:32px 24px;
+  border-radius:8px;
+  margin:40px 0;
+}
+.cta-inner{
+  display:flex;
+  justify-content:space-between;/* 左右に振り分ける */
+  align-items:center;
+  gap:32px;
+  max-width:960px;              /* 幅をこれ以上広げない */
+  margin:0 auto;                /* 中央寄せ */
+}
+
+.cta-desc{
+  margin:0;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--text);
+}
+
+/* モバイル：縦並びに切り替え ------------------------------- */
+@media(max-width:767px){
+  .cta-inner{
+    flex-direction:column;
+    text-align:center;
+  }
+}
+
+/* =====================================================
+About
+===================================================== */
 .about{background:#fff;padding:40px 0;}
 .about h2{text-align:center;font-size:28px;margin-bottom:24px;}
 .about p{font-size:18px;text-align:center;max-width:780px;margin:0 auto 32px;line-height:1.6;}
@@ -214,16 +252,6 @@ header nav a:hover{
   .impact-title{font-size:26px;}
   .impact-list li{font-size:16px;margin:16px 0;}
 }
-
-/* ------------------ sampleCTA ------------------ */
-.sample-cta{
-  background:#FFF4F0;
-  padding:32px 24px;
-  margin:40px 0;
-  border:1px solid #FFD5C0;
-  border-radius:8px;
-  text-align:center;}
-  .sample-cta p{margin:0 0 16px;font-size:18px;}
 
 /* Usage -----------------------------------------------------------*/
 .usage{background:var(--bg);padding:40px 0 40px;}
@@ -527,14 +555,19 @@ html{scroll-behavior:smooth;}
   <a href="#faq">よくある質問</a>
   </nav>
   
-  <!-- === Sample CTA === -->
+  <!-- === Sample CTA ============================================ -->
   <div class="sample-cta">
-      <div class="container">   
-        <p>まずは4級のサンプル問題で<strong>出題イメージ</strong>を体験！</p>
-        <a href="https://monken.mc-plus.jp/exam/trial/" class="btn tertiary">サンプル問題を受ける
-        </a>
-       </div>
+    <div class="cta-inner">
+    <!-- 左：説明 -->
+    <p class="cta-desc">
+      <strong>4級サンプル問題</strong> を体験！<br>
+      ✅ 選択式 &nbsp;|&nbsp; 8 問 &nbsp;|&nbsp; 制限時間 なし
+    </p>
+
+    <!-- 右：ボタン -->
+    <a href="https://monken.mc-plus.jp/exam/trial/" class="btn tertiary">サンプル問題を受ける</a>
   </div>
+</div>
   
 <!-- ================= About Problem Solving ================= -->
 <section class="about" id="about">
