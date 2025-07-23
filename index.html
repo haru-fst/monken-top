@@ -171,6 +171,55 @@ header nav a:hover{
 }
 
 /* =====================================================
+   CTA 専用ボタン（サンプル問題） 
+   ※ .btn のあとに .cta-btn が付く場合だけ上書き
+===================================================== */
+.btn.cta-btn{
+  /* サイズ感 ------------------------------------------------ */
+  display:inline-flex;                 /* アイコンと文字を横並び */
+  align-items:center;
+  justify-content:center;              /* ← 文字を中央に */
+  gap:10px;                            /* 文字とアイコン間隔 */
+  padding:14px 48px;                   /* 他ボタンよりやや大きめ */
+  font-size:18px;                      /* 文字を少し大きく        */
+
+  /* 色・雰囲気 -------------------------------------------- */
+  background:#333;                     /* 落ち着いたダークグレー */
+  color:#fff;
+  border:none;                         /* 枠線なしで引き締める   */
+  border-radius:6px;                   /* 角丸は軽く             */
+  box-shadow:0 4px 12px rgba(0,0,0,.08);/* うっすら影で浮かせる  */
+  transition:all .2s ease;
+}
+
+.btn.cta-btn:hover{
+  background:#000;                     /* 濃いグレーに変化        */
+  box-shadow:0 6px 18px rgba(0,0,0,.12);
+}
+
+/* —─▶ アイコンを擬似要素で追加 ---------------------------- */
+.btn.cta-btn::after{
+  content:'';
+  width:9px; height:9px;
+  border-right:2px solid currentColor;
+  border-bottom:2px solid currentColor;
+  transform:rotate(-45deg);            /* 矢印にする              */
+  transition:transform .2s ease;
+}
+
+.btn.cta-btn:hover::after{
+  transform:translateX(4px) rotate(-45deg);  /* 右にスッと動く       */
+}
+
+/* モバイル（任意）：幅いっぱいにしたいなら ---------------- */
+@media(max-width:767px){
+  .btn.cta-btn{
+    width:100%;                        /* 画面幅でタップしやすく */
+  }
+}
+
+
+/* =====================================================
 About
 ===================================================== */
 .about{background:#fff;padding:40px 0;}
@@ -560,12 +609,12 @@ html{scroll-behavior:smooth;}
     <div class="cta-inner">
     <!-- 左：説明 -->
     <p class="cta-desc">
-      <strong>4級サンプル問題</strong> を体験！<br>
-      ✅ 選択式 &nbsp;|&nbsp; 8 問 &nbsp;|&nbsp; 制限時間 なし
+      今すぐ<strong>4級サンプル問題</strong> を体験！<br>
+      選択式 &nbsp;|&nbsp; 8 問 &nbsp;|&nbsp; 制限時間 なし
     </p>
 
     <!-- 右：ボタン -->
-    <a href="https://monken.mc-plus.jp/exam/trial/" class="btn tertiary">サンプル問題を受ける</a>
+    <a href="https://monken.mc-plus.jp/exam/trial/" class="btn cta-btn">サンプル問題を受ける</a>
   </div>
 </div>
   
