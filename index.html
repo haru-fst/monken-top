@@ -77,9 +77,10 @@ header nav a:hover{
 .btn{
   position:relative;              /* 疑似要素の基準点にする★ */
   display:inline-flex;
-  align-items:center;
-  gap:16px;                       /* テキストと矢印の間隔 */
-  padding:12px 48px 12px 32px;    /* 右側を少し広げて矢印分の余白確保 */
+    justify-content:center;     /* ←文字を水平方向にセンター */
+  align-items:center;         /* 縦も中央揃え            */
+  gap:12px;                   /* 文字‑矢印の間隔          */
+  padding:12px 40px;          /* 左右均等に余白           */
   font-size:16px;
   font-weight:700;
   border-radius:999px;    /* 4→999 */
@@ -99,36 +100,24 @@ header nav a:hover{
   color:var(--accent);
   border:2px solid var(--accent);
 } 
-.btn.tertiary:hover{background:var(--accent);color:#fff;}
-
-  /* ▼ 丸い矢印アイコン  -------------------------------- */
- .btn.tertiary::after{
-  content:'';
-  width:24px;height:24px;
-  border-radius:50%;
+.btn.tertiary:hover{
   background:var(--accent);
-  flex-shrink:0;                  /* 丸がつぶれないよう固定 */
-  display:inline-flex;            /* ←内側に矢印を描くため */
-  justify-content:center;
-  align-items:center;
+  color:#fff;}
+
+ /* ▼ 矢印アイコン（●なし） ---------------------------- */
+  .btn.tertiary::after{
+  content:'';
+  width:8px; height:8px;
+  border-right:2px solid var(--accent);   /* 通常：赤 */
+  border-bottom:2px solid var(--accent);
+  transform:rotate(-45deg);               /* → 向き  */
   transition:.25s;
   }
- .btn.tertiary::before{
-  content:'';
-  position:absolute;              /* ○の中心で描く */
-  right:34px;                     /* 32+2(px) の位置調整 */
-  top:50%;
-  width:6px; height:6px;
-  border-right:2px solid #fff;
-  border-bottom:2px solid #fff;
-  transform:translateY(-50%) rotate(-45deg);
-  pointer-events:none;
- }
-
- /* ▼ tertiaryホバー時：矢印丸を軽く右へスライド --------------- */
- .btn.tertiary:hover::after{
-  transform:translateX(4px);
- }
+  /* ホバー時は矢印を白に変更 */
+  .btn.tertiary:hover::after{
+  border-color:#fff;
+  transform:translateX(4px) rotate(-45deg);  /* 右へスライド */
+  }
 
 /*===== 2) ボタンを中央に置く汎用ラッパ =====*/
 .more-center{
