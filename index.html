@@ -137,85 +137,55 @@ header nav a:hover{
 .toc a:hover{background:#F8F8F8}
 .toc a::after{content:'▾';display:block;font-size:12px;margin-top:4px;color:var(--accent)}
 
-/* =====================================================
- sampleCTA (サンプル問題)
-===================================================== */
-.sample-cta{
-  background:var(--light);
-  padding:32px 24px;
-  border-radius:8px;
-  margin:40px 0;
-}
-.cta-inner{
-  display:flex;
-  justify-content:space-between;/* 左右に振り分ける */
-  align-items:center;
-  gap:32px;
-  max-width:960px;              /* 幅をこれ以上広げない */
-  margin:0 auto;                /* 中央寄せ */
+/* ==============================================
+   サンプル問題 CTA ボタン（中央配置）
+   HTML 側： <a href="/sample4" class="btn cta-btn">4級サンプル問題を体験する</a>
+============================================== */
+.sample-cta .container{                 /* ボタンだけ真ん中に */
+  text-align:center;
 }
 
-.cta-desc{
-  margin:0;
-  font-size:18px;
-  line-height:1.6;
-  color:var(--text);
-}
-
-/* モバイル：縦並びに切り替え ------------------------------- */
-@media(max-width:767px){
-  .cta-inner{
-    flex-direction:column;
-    text-align:center;
-  }
-}
-
-/* =====================================================
-   CTA 専用ボタン（サンプル問題） 
-   ※ .btn のあとに .cta-btn が付く場合だけ上書き
-===================================================== */
+/* ─── 1. 通常状態：白塗り＋黒枠 ─── */
 .btn.cta-btn{
-  /* サイズ感 ------------------------------------------------ */
-  display:inline-flex;                 /* アイコンと文字を横並び */
-  align-items:center;
-  justify-content:center;              /* ← 文字を中央に */
-  gap:10px;                            /* 文字とアイコン間隔 */
-  padding:14px 48px;                   /* 他ボタンよりやや大きめ */
-  font-size:18px;                      /* 文字を少し大きく        */
+  display:inline-flex;
+  align-items:center;                   /* 矢印と文字を中央揃え */
+  gap:12px;
+  padding:18px 56px;                    /* 少し大きめに         */
+  font-size:20px;                       /* 文字も 1 段アップ     */
 
-  /* 色・雰囲気 -------------------------------------------- */
-  background:#333;                     /* 落ち着いたダークグレー */
-  color:#fff;
-  border:none;                         /* 枠線なしで引き締める   */
-  border-radius:6px;                   /* 角丸は軽く             */
-  box-shadow:0 4px 12px rgba(0,0,0,.08);/* うっすら影で浮かせる  */
+  background:#fff;
+  color:#000;
+  border:2px solid #000;                /* 黒枠                 */
+  border-radius:6px;
+  box-shadow:0 4px 12px rgba(0,0,0,.07);/* うっすら影           */
+
   transition:all .2s ease;
 }
 
+/* ─── 2. ホバー：黒塗り＋白文字 ─── */
 .btn.cta-btn:hover{
-  background:#000;                     /* 濃いグレーに変化        */
+  background:#000;
+  color:#fff;
   box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
 
-/* —─▶ アイコンを擬似要素で追加 ---------------------------- */
+/* ─── 3. 擬似要素の矢印（色は currentColor で自動反転） ─── */
 .btn.cta-btn::after{
   content:'';
-  width:9px; height:9px;
+  width:9px;height:9px;
   border-right:2px solid currentColor;
   border-bottom:2px solid currentColor;
-  transform:rotate(-45deg);            /* 矢印にする              */
+  transform:rotate(-45deg);
   transition:transform .2s ease;
 }
 
 .btn.cta-btn:hover::after{
-  transform:translateX(4px) rotate(-45deg);  /* 右にスッと動く       */
+  transform:translateX(4px) rotate(-45deg);  /* 右へスッと動く */
 }
 
-/* モバイル（任意）：幅いっぱいにしたいなら ---------------- */
+/* ─── 4. モバイルで幅いっぱいにしたい ───*/
 @media(max-width:767px){
-  .btn.cta-btn{
-    width:100%;                        /* 画面幅でタップしやすく */
-  }
+  .btn.cta-btn{width:100%;}
 }
 
 
