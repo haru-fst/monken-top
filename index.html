@@ -141,53 +141,50 @@ header nav a:hover{
    サンプル問題 CTA ボタン（中央配置）
    HTML 側： <a href="/sample4" class="btn cta-btn">4級サンプル問題を体験する</a>
 ============================================== */
-.sample-cta .container{                 /* ボタンだけ真ん中に */
-  text-align:center;
+/* 0) グレー背景 & 余白 --------------------- */
+.sample-cta{
+  background:var(--light);       /* #F8F8F8 */
+  padding:40px 0;
 }
 
-/* ─── 1. 通常状態：白塗り＋黒枠 ─── */
+/* 1) 真ん中に寄せる ----------------------- */
+.sample-cta .cta-inner{text-align:center;}
+
+/* 2) ボタン本体 ------------ */
 .btn.cta-btn{
   display:inline-flex;
-  align-items:center;                   /* 矢印と文字を中央揃え */
+  align-items:center;
   gap:12px;
-  padding:18px 56px;                    /* 少し大きめに         */
-  font-size:20px;                       /* 文字も 1 段アップ     */
-
+  padding:18px 56px;
+  font-size:20px;
   background:#fff;
   color:#000;
-  border:2px solid #000;                /* 黒枠                 */
+  border:2px solid #000;
   border-radius:6px;
-  box-shadow:0 4px 12px rgba(0,0,0,.07);/* うっすら影           */
-
+  box-shadow:0 4px 12px rgba(0,0,0,.07);
   transition:all .2s ease;
 }
-
-/* ─── 2. ホバー：黒塗り＋白文字 ─── */
 .btn.cta-btn:hover{
   background:#000;
   color:#fff;
   box-shadow:0 6px 18px rgba(0,0,0,.12);
 }
-
-/* ─── 3. 擬似要素の矢印（色は currentColor で自動反転） ─── */
+/* 矢印 */
 .btn.cta-btn::after{
   content:'';
-  width:9px;height:9px;
+  width:9px; height:9px;
   border-right:2px solid currentColor;
   border-bottom:2px solid currentColor;
   transform:rotate(-45deg);
   transition:transform .2s ease;
 }
-
 .btn.cta-btn:hover::after{
-  transform:translateX(4px) rotate(-45deg);  /* 右へスッと動く */
+  transform:translateX(4px) rotate(-45deg);
 }
-
-/* ─── 4. モバイルで幅いっぱいにしたい ───*/
+/* モバイル幅いっぱい（任意） */
 @media(max-width:767px){
   .btn.cta-btn{width:100%;}
 }
-
 
 /* =====================================================
 About
@@ -577,14 +574,8 @@ html{scroll-behavior:smooth;}
   <!-- === Sample CTA ============================================ -->
   <div class="sample-cta">
     <div class="cta-inner">
-    <!-- 左：説明 -->
-    <p class="cta-desc">
-      今すぐ<strong>4級サンプル問題</strong> を体験！<br>
-      選択式 &nbsp;|&nbsp; 8 問 &nbsp;|&nbsp; 制限時間 なし
-    </p>
-
-    <!-- 右：ボタン -->
-    <a href="https://monken.mc-plus.jp/exam/trial/" class="btn cta-btn">サンプル問題を受ける</a>
+    <!-- ボタン -->
+    <a href="https://monken.mc-plus.jp/exam/trial/" class="btn cta-btn">今すぐ4級サンプル問題を受ける</a>
   </div>
 </div>
   
