@@ -432,22 +432,77 @@ th{background:#EFEFEF;font-weight:700;}
 @media(max-width:767px){
   .adopt-flex{flex-direction:column;gap:32px;}
 }
-/* ------------------ flow & faq------------------ */
+/* ========== Flow / 受験の流れ ========== */
 .flow{background: var(--bg);
   padding:40px 0;
 }
-.flow h2,.faq h2{
-  text-align:center;
-  font-size:28px;
+.flow h2{text-align:center;font-size:28px;margin:0 0 48px;}
+
+.flow-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:48px;
+}
+
+.flow-col{text-align:center;}
+
+.flow-col h3{
+  font-size:24px;
+  margin:0 0 8px;
+}
+.flow-col .grade{
+  border-bottom:3px solid var(--accent);   /* 赤いアンダーライン */
+  padding-bottom:2px;
+}
+.flow-type{
+  font-size:22px;
+  font-weight:700;
+  color:var(--accent);
+  margin:0 0 32px;
+}
+
+/* ----- OL ステップカード ----- */
+.flow-steps{list-style:none;margin:0;padding:0;}
+.flow-steps li{
+  display:flex;
+  align-items:center;
   margin:0 0 24px;
+  border:1px solid #eee;
+  font-size:18px;
 }
-.flow h3{
-  margin:24px 0 8px;
-  font-size:20px;
+.step-label{
+  background:var(--accent);
+  color:#fff;
+  font-weight:700;
+  font-size:24px;
+  padding:20px 24px;
+  flex:0 0 120px;          /* ラベル幅を固定 */
 }
-.flow ol{
-  padding-left:1.2em;margin:0 0 24px;}
-.faq-category{margin:32px 0;}.faq dt{font-weight:700;margin:8px 0;}.faq dd{margin:0 0 16px 1em;}.note{font-size:14px;color:#666;}
+.step-label + span{
+  flex:1;
+  padding:20px;
+  text-align:left;
+}
+
+/* ----- 備考 ----- */
+.note{
+  font-size:14px;
+  color:#666;
+  margin:12px 0 0;
+  text-align:left;
+}
+.note.bottom{text-align:center;margin-top:32px;}
+
+/* ----- レスポンシブ調整 ----- */
+@media(max-width:767px){
+  .flow-steps li{font-size:16px;}
+  .step-label{font-size:20px;flex:0 0 96px;padding:16px;}
+}
+
+/* FAQ  */
+.faq-category{margin:32px 0;}
+.faq dt{font-weight:700;margin:8px 0;}
+.faq dd{margin:0 0 16px 1em;}.note{font-size:14px;color:#666;}
   
 /* FAQ accordion design */
 .faq{
@@ -820,30 +875,39 @@ html{scroll-behavior:smooth;}
   <div class="container">
     <h2>受験の流れ</h2>
 
-    <!-- ▼ 追加：ボックスラッパー -->
-    <div class="flow-box">
-      <h3>【３・４級】会場受験</h3>
-      <ol>
-        <li>申込フォームで <strong>会場 & 日付</strong> を選択</li>
-        <li>受験票をメール受信</li>
-        <li>全国200会場で通年実施</li>
-        <li>試験当日、会場で受験</li>
-      </ol>
+    <div class="flow-grid">
+      <!-- 左：3・4級 -------------------------------------------------->
+      <div class="flow-col">
+        <h3><span class="grade">３・４級</span></h3>
+        <p class="flow-type">通年受験</p>
+
+        <ol class="flow-steps">
+          <li><span class="step-label">Step&nbsp;1</span><span>申込フォームで<br>会場 &amp; 日付 を選択</span></li>
+          <li><span class="step-label">Step&nbsp;2</span><span>受験票をメール受信</span></li>
+          <li><span class="step-label">Step&nbsp;3</span><span>試験当日、会場で受験 *</span></li>
+        </ol>
+
+        <p class="note">* 全国200会場で、いつでも受験可能です。</p>
+      </div>
+
+      <!-- 右：1・2級 -------------------------------------------------->
+      <div class="flow-col">
+        <h3><span class="grade">１・２級</span></h3>
+        <p class="flow-type">個別日程調整</p>
+
+        <ol class="flow-steps">
+          <li><span class="step-label">Step&nbsp;1</span><span>問合せフォーム から<br>希望日を送信</span></li>
+          <li><span class="step-label">Step&nbsp;2</span><span>事務局とメールにて<br>日程調整</span></li>
+          <li><span class="step-label">Step&nbsp;3</span><span>東京本社（または団体受験会場）で受験 *</span></li>
+        </ol>
+      </div>
     </div>
 
-    <div class="flow-box">
-      <h3>【１・２級】個別日程調整</h3>
-      <ol>
-        <li>まずは <strong>問合せフォーム</strong> から希望を送信</li>
-        <li>事務局とメールで日程調整</li>
-        <li>東京本社（または団体受験会場）で実施</li>
-      </ol>
-    </div>
-
-    <p class="note">※ 企業単位の団体受験も承ります。詳細はお問い合わせください。</p>
+    <p class="note bottom">
+      企業単位の団体受験も承ります。詳細はお問い合わせください。
+    </p>
   </div>
 </section>
-
   
 <!-- ================= FAQ ================= -->
 <section id="faq" class="faq">
