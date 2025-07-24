@@ -432,28 +432,56 @@ th{background:#EFEFEF;font-weight:700;}
 @media(max-width:767px){
   .adopt-flex{flex-direction:column;gap:32px;}
 }
-/* ========== Flow / 受験の流れ ========== */
+/* =====================================================
+   Flow （受験の流れ）2 列カード
+===================================================== */
+
+/* 0) 2 列グリッドにして “行” を作る --------------------- */
+.flow-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+  gap:32px;
+  /* 同じ行に並んだカードの高さを必ずそろえる               */
+  grid-auto-rows:1fr;
+}
+
 .flow{background: var(--bg);
   padding:40px 0;
 }
 .flow h2{text-align:center;font-size:28px;margin:0 0 48px;}
 
-.flow-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:32px;                               /* 列・行とも 32px ピッチ                   */
-  grid-auto-rows:1fr;                     /* ★ 同じ行にある 2 枚の高さを強制的に揃える */
-}
-
-/* 2) カード本体（左右で共通化） ―――――――― */
+/* 1) li＝カード本体 ------------------------------------ */
 .flow-grid li{
-  display:flex;                           /* インライン時の高さブレを防止            */
-  align-items:stretch;                    /* ラベルと本文の高さを揃える              */
+  /* ★フレックス → グリッドに変更し高さズレを防ぐ */
+  display:grid;
+  grid-template-columns:112px 1fr; /* [ラベル固定幅] [本文可変] */
+  align-items:stretch;             /* ラベル‐本文を同じ高さに   */
   background:#fff;
   border:1px solid #e0e0e0;
   border-radius:8px;
   box-shadow:0 2px 6px rgba(0,0,0,.05);
-  overflow:hidden;                        /* 角丸内にラベル色がはみ出ないように      */
+  overflow:hidden;                 /* 角丸外にはみ出さない      */
+}
+
+/* 2) 左ラベル ------------------------------------------ */
+.flow-grid .step-label{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  text-align:center;
+  font:700 20px/1.4 'Noto Sans JP',sans-serif;
+  color:#fff;
+  background:#b30a12;              /* 既存アクセントより少し暗め */
+  padding:20px 0;
+}
+
+/* 3) 本文 ---------------------------------------------- */
+.flow-grid .step-body{
+  display:flex;
+  align-items:center;
+  font-size:16px;                  /* Usage / Testimonials と同 */
+  line-height:1.7;
+  padding:20px 24px;
 }
 
 .flow-col{text-align:center;}
@@ -473,38 +501,6 @@ th{background:#EFEFEF;font-weight:700;}
   margin:0 0 32px;
 }
 
-/* ----- OL ステップカード ----- */
-.flow-steps{list-style:none;margin:0;padding:0;}
-.flow-steps li{
-  display:flex;
-  align-items:center;
-  margin:0 0 24px;
-  border:1px solid #eee;
-  font-size:18px;
-}
-/* 3) “Step” ラベル部分 ――――――――――――― */
-.step-label{
-  flex:0 0 112px;                         /* 左側だけ幅固定（中央も右も同幅）        */
-  display:flex;
-  flex-direction:column;
-  justify-content:center;                 /* 文字を上下中央に                        */
-  text-align:center;
-  background:#b30a12;                     /* 落ち着いた赤＝var(--accent) より -20%   */
-  color:#fff;
-  font-size:20px;
-  font-weight:700;
-  padding:20px 0;
-}
-/* 4) 本文エリア ―――――――――――――――― */
-.step-label + span{                       /* ul > li > .step-label + span の形を想定  */
-  flex:1;                                 /* 残り幅を全部取る                        */
-  display:flex;
-  align-items:center;
-  font-size:16px;                         /* Usage / Testimonials と同じサイズ       */
-  line-height:1.7;
-  padding:20px 24px;
-}
-
 /* ----- 備考 ----- */
 .note{
   font-size:14px;
@@ -514,13 +510,11 @@ th{background:#EFEFEF;font-weight:700;}
 }
 .note.bottom{text-align:center;margin-top:32px;}
 
-/* ----- レスポンシブ調整 ----- */
+/* 4) モバイルは 1 列で高さ合わせ不要 ------------------- */
 @media(max-width:767px){
-  .flow-steps li{font-size:16px;}
-  .step-label{font-size:20px;flex:0 0 96px;padding:16px;}
   .flow-grid{
-    grid-template-columns:1fr;            /* 1 枚ずつ縦並び                          */
-    grid-auto-rows:auto;                  /* 高さ揃えを解除                          */
+    grid-template-columns:1fr;
+    grid-auto-rows:auto;
   }
 }
 
@@ -907,9 +901,13 @@ html{scroll-behavior:smooth;}
         <p class="flow-type">通年受験</p>
 
         <ol class="flow-steps">
-          <li><span class="step-label">Step&nbsp;1</span><span>申込フォームで<br>会場 &amp; 日付 を選択</span></li>
-          <li><span class="step-label">Step&nbsp;2</span><span>受験票をメール受信</span></li>
-          <li><span class="step-label">Step&nbsp;3</span><span>試験当日、会場で受験 *</span></li>
+          <li><span class="step-label">Step&nbsp;1</span>
+            <span class="step-body">申込フォームで<br>会場 &amp; 日付 を選択</span>
+          </li>
+          <li><span class="step-label">Step&nbsp;2</span>
+            <span class="step-body">受験票をメール受信</span></li>
+          <li><span class="step-label">Step&nbsp;3</span>
+            <span class="step-body">試験当日、会場で受験 *</span></li>
         </ol>
 
         <p class="note">* 全国200会場で、いつでも受験可能です。</p>
@@ -921,9 +919,12 @@ html{scroll-behavior:smooth;}
         <p class="flow-type">個別日程調整</p>
 
         <ol class="flow-steps">
-          <li><span class="step-label">Step&nbsp;1</span><span>問合せフォーム から<br>希望日を送信</span></li>
-          <li><span class="step-label">Step&nbsp;2</span><span>事務局とメールにて<br>日程調整</span></li>
-          <li><span class="step-label">Step&nbsp;3</span><span>東京本社（または団体受験会場）で受験 *</span></li>
+          <li><span class="step-label">Step&nbsp;1</span>
+            <span class="step-body">問合せフォーム から<br>希望日を送信</span></li>
+          <li><span class="step-label">Step&nbsp;2</span>
+            <span class="step-body">事務局とメールにて<br>日程調整</span></li>
+          <li><span class="step-label">Step&nbsp;3</span>
+            <span class="step-body">東京本社（または団体受験会場）で受験 *</span></li>
         </ol>
       </div>
     </div>
