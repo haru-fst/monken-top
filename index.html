@@ -438,11 +438,11 @@ th{background:#EFEFEF;font-weight:700;}
 
 /* 0) 2 列グリッドにして “行” を作る --------------------- */
 .flow-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
-  gap:32px;
-  /* 同じ行に並んだカードの高さを必ずそろえる               */
-  grid-auto-rows:1fr;
+  display:grid; /* ① 幅 440px 固定カードを 2 列 ── 画面幅に収まらなければ自動 1 列 */
+  grid-template-columns:repeat(auto-fill, minmax(440px,1fr)); /* ② 列同士を中央に寄せる */
+  justify-content:center;
+  gap:32px;               /* 行間も列間も 32px */
+  grid-auto-rows:1fr;     /* 行内カードの高さをそろえる */
 }
 
 .flow{background: var(--bg);
@@ -461,6 +461,7 @@ th{background:#EFEFEF;font-weight:700;}
   border-radius:8px;
   box-shadow:0 2px 6px rgba(0,0,0,.05);
   overflow:hidden;                 /* 角丸外にはみ出さない      */
+  margin:8px 0;  
 }
 
 /* 2) 左ラベル ------------------------------------------ */
@@ -503,12 +504,15 @@ th{background:#EFEFEF;font-weight:700;}
 
 /* ----- 備考 ----- */
 .note{
-  font-size:14px;
-  color:#666;
-  margin:12px 0 0;
-  text-align:left;
+  font-size:16px;         /* ←★ 14 → 16 にアップ */
+  color:var(--text);
+  margin:16px 0 0;        /* 上余白だけ少し広げる */
+  text-align:left;        /* ←★ カード左端と合わせる */
 }
-.note.bottom{text-align:center;margin-top:32px;}
+.note.bottom{
+  text-align:center;
+  margin-top:32px;
+}
 
 /* 4) モバイルは 1 列で高さ合わせ不要 ------------------- */
 @media(max-width:767px){
@@ -933,6 +937,11 @@ html{scroll-behavior:smooth;}
       企業単位の団体受験も承ります。詳細はお問い合わせください。
     </p>
   </div>
+
+  <div class="more-center">
+  <a href="https://monken.pro/contact/" class="btn tertiary">お問い合わせはこちら</a>
+</div>
+
 </section>
   
 <!-- ================= FAQ ================= -->
