@@ -440,8 +440,20 @@ th{background:#EFEFEF;font-weight:700;}
 
 .flow-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:48px;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;                               /* 列・行とも 32px ピッチ                   */
+  grid-auto-rows:1fr;                     /* ★ 同じ行にある 2 枚の高さを強制的に揃える */
+}
+
+/* 2) カード本体（左右で共通化） ―――――――― */
+.flow-grid li{
+  display:flex;                           /* インライン時の高さブレを防止            */
+  align-items:stretch;                    /* ラベルと本文の高さを揃える              */
+  background:#fff;
+  border:1px solid #e0e0e0;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,.05);
+  overflow:hidden;                        /* 角丸内にラベル色がはみ出ないように      */
 }
 
 .flow-col{text-align:center;}
@@ -470,18 +482,27 @@ th{background:#EFEFEF;font-weight:700;}
   border:1px solid #eee;
   font-size:18px;
 }
+/* 3) “Step” ラベル部分 ――――――――――――― */
 .step-label{
-  background:var(--accent);
+  flex:0 0 112px;                         /* 左側だけ幅固定（中央も右も同幅）        */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;                 /* 文字を上下中央に                        */
+  text-align:center;
+  background:#b30a12;                     /* 落ち着いた赤＝var(--accent) より -20%   */
   color:#fff;
+  font-size:20px;
   font-weight:700;
-  font-size:24px;
-  padding:20px 24px;
-  flex:0 0 120px;          /* ラベル幅を固定 */
+  padding:20px 0;
 }
-.step-label + span{
-  flex:1;
-  padding:20px;
-  text-align:left;
+/* 4) 本文エリア ―――――――――――――――― */
+.step-label + span{                       /* ul > li > .step-label + span の形を想定  */
+  flex:1;                                 /* 残り幅を全部取る                        */
+  display:flex;
+  align-items:center;
+  font-size:16px;                         /* Usage / Testimonials と同じサイズ       */
+  line-height:1.7;
+  padding:20px 24px;
 }
 
 /* ----- 備考 ----- */
@@ -497,6 +518,10 @@ th{background:#EFEFEF;font-weight:700;}
 @media(max-width:767px){
   .flow-steps li{font-size:16px;}
   .step-label{font-size:20px;flex:0 0 96px;padding:16px;}
+  .flow-grid{
+    grid-template-columns:1fr;            /* 1 枚ずつ縦並び                          */
+    grid-auto-rows:auto;                  /* 高さ揃えを解除                          */
+  }
 }
 
 /* FAQ  */
